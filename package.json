@@ -1,0 +1,24 @@
+{
+  "name": "vue-vd-validate",
+  "version": "0.0.1",
+  "description": "a vuejs validate plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheesehary/vue-vd-validate.git"
+  },
+  "keywords": [
+    "vue",
+    "validate",
+    "validator"
+  ],
+  "author": "cheesehary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheesehary/vue-vd-validate/issues"
+  },
+  "homepage": "https://github.com/cheesehary/vue-vd-validate#readme"
+}

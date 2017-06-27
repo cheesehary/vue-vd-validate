@@ -64,4 +64,3 @@ For now, the customizable parameters are:
 * delay | Number: delay for the validation on inputs.
 * rules | Object: each value should be a function that returns true or false which indicates whether the input passes this rule.
 * errors | Object: each value should be a String which will be displayed when the input fails corresponding rule, so the keys should be consistent with keys in `rules`.
-For now, the customizable parameters are:

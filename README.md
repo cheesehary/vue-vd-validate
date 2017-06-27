@@ -20,7 +20,7 @@ Simply apply `v-validate` to tags like `<input>` and pass validation rules as va
 ```
 It is also compatible with custom components, while you need to provide a prop named `value` in the component.
 ```
-<custom-input v-validate="'required|phone'" data-vd-name="telephone" :value="someValue">
+<custom-input v-validate="'required|phone'" data-vd-name="telephone" :value="someValue"></custom-input>
 ```
 
 ## Available Rules

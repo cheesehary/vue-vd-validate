@@ -2,9 +2,9 @@
   "name": "vue-vd-validate",
   "version": "0.0.4",
   "description": "a vuejs validate plugin",
-  "main": "index.js",
+  "main": "lib/vd-validate.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "babel -d lib/ src/"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/cheesehary/vue-vd-validate/issues"
   },
-  "homepage": "https://github.com/cheesehary/vue-vd-validate#readme"
+  "homepage": "https://github.com/cheesehary/vue-vd-validate#readme",
+  "dependencies": {
+    "core-js": "^2.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-stage-2": "^6.24.1"
+  }
 }

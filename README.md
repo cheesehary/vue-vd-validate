@@ -24,10 +24,10 @@ It is also compatible with custom components, while you need to provide a prop n
 ```
 
 ## Available Rules
-* required: `null`, `undefined`, `''` and `[]` will violate this rule.
-* number: The input must only consist of numbers.
-* phone: The input must be a valid phone number in China.
-* identity: The input must be a valid ID card number in China.
+- **required**: `null`, `undefined`, `''` and `[]` will violate this rule.
+- **number**: The input must only consist of numbers.
+- **phone**: The input must be a valid phone number in China.
+- **identity**: The input must be a valid ID card number in China.
 
 ## Customization
 You can customize this validator in main.js by passing in an object.
@@ -59,8 +59,8 @@ mounted() {
 }
 ```
 For now, the customizable parameters are:
-* showErrorMsg | Boolean: display the error message under the input or not, true as default.
-* customClass | String: className for the error message.
-* delay | Number: delay for the validation on inputs.
-* rules | Object: each value should be a function that returns true or false which indicates whether the input passes this rule.
-* errors | Object: each value should be a String which will be displayed when the input fails corresponding rule, so the keys should be consistent with keys in `rules`.
+- **showErrorMsg** | Boolean: display the error message under the input or not, true as default.
+- **customClass** | String: className for the error message.
+- **delay** | Number: delay for the validation on inputs.
+- **rules** | Object: each value should be a function that returns true or false which indicates whether the input passes this rule.
+- **errors** | Object: each value should be a String which will be displayed when the input fails corresponding rule, so the keys should be consistent with keys in `rules`.

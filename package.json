@@ -1,6 +1,6 @@
 {
   "name": "vue-vd-validate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a vuejs validate plugin",
   "main": "index.js",
   "scripts": {

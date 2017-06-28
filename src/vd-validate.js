@@ -50,11 +50,11 @@ class Validator {
     this.fields = {};
   }
 
-  addErrors(obj) {
+  errors(obj) {
     this.errors = Object.assign({}, this.errors, obj);
   }
 
-  addRules(obj) {
+  rules(obj) {
     this.rules = Object.assign({}, this.rules, obj);
   }
 
@@ -151,7 +151,7 @@ class ValidateListener {
     const nativeListener = _wait(() => this.vm.$validator.validateField(this.name, this.el.value), this.getFieldDelay());
 
     if(this.component) {
-      this.component.$watch('value', componentListener);
+      this.component.$on(`${this.config.emit || 'input'}`, componentListener);
     }
     else {
       switch(this.el.tagName) {
@@ -200,6 +200,28 @@ class ValidateListener {
     return el;
   }
 
+  handleInnerClass(msg) {
+    const className = this.getDataAttr('class');
+
+    if(!className) return;
+
+    let map = this.vm.$el.attributes;
+    let unique;
+    const regex = /^data-v-/;
+
+    for(let i = 0; i < map.length; i++) {
+      if(regex.test(map[i].localName)) {
+        unique = map[i].localName;
+        break;
+      }
+    }
+    
+    if(unique) {
+      msg.setAttribute(unique, '');
+    }
+    msg.classList.add(className);
+  }
+
   createErrorMsg() {
     if(this.config.showErrorMsg) {
       const target = this.getDomTarget(this.el);
@@ -208,6 +230,7 @@ class ValidateListener {
         this.target = target;
 
         let wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
         wrapper.classList.add('vd-error-wrapper');
         target.parentNode.insertBefore(wrapper, target);
         wrapper.appendChild(target);
@@ -216,6 +239,7 @@ class ValidateListener {
         msg.style.position = 'absolute';
         msg.style.display = 'none';
         msg.classList.add(this.config.customClass);
+        this.handleInnerClass(msg);
         this.msg = wrapper.appendChild(msg), msg;
       }
     }

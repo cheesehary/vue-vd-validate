@@ -101,9 +101,10 @@ methods: {
         /**
          * result.fails is an Array, with each element being an Object.
          * The Object contains name of the field and rules that it violates.
+         */
       }
     }
   }
 }
 ```
-If you want to communicate validation between child components and parent ones, you may use Event Bus.
+If you want to communicate validation between child components and parent ones, you may use [Event Bus](https://vuejs.org/v2/guide/components.html#Non-Parent-Child-Communication).

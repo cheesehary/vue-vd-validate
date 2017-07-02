@@ -33,10 +33,17 @@ methods: {
 ```
 
 ## Available Rules
+You may pass `parameter` as a second argument to rules. The parameter is a String concatenated to the rule by a colon.
+
+
+The format is `v-validate="'rule:parameter'"`.
+
 - **required**: `null`, `undefined`, `''` and `[]` will violate this rule.
 - **number**: The input must only consist of numbers.
 - **phone**: The input must be a valid phone number in China.
 - **identity**: The input must be a valid ID card number in China.
+- **email**: The input must be a valid email.
+- **length**: [parameter]. The input length must be in valid length range. The parameter format is `'length:min-max'`. When there is no min or max restriction, just leave it blank. e.g. `length:-5` means that the max length is 5.
 
 ## Attributes
 Attributes affect the particular field that they have been applied to, with higher priority than global customization.
@@ -55,21 +62,22 @@ Vue.use(Validate, {
     otherRule: function() { //rule here }
   },
   errors: {
-    otherRule: 'You break the otherRule!'
+    required: 'error message of rule "required" in your way'
   }
 })
 ```
-Or you can use the methods `rules` and `errors` in components for particular rules.
+Or you can use the method `rules` in components for particular rules.
 ```
 mounted() {
-  var vm = this;
+  let vm = this;
   this.$validator.rules({
     biggerThanCount(value) {
-      return value > vm.count;
+      let error = false;
+      if(value <= vm.count) {
+        error = 'value should be bigger than the count';
+      }
+      return error;
     }
-  });
-  this.$validator.errors({
-    biggerThanCount: 'Value should be bigger than the count.'
   });
 }
 ```
@@ -78,8 +86,8 @@ For now, the customizable parameters are:
 - **customClass** | String: className for the error message.
 - **delay** | Number: delay for the validation on inputs.
 - **emit** | String: event name to emit from inside the custom components, defaults to `input`.
-- **rules** | Object: each value should be a function that returns true or false which indicates whether the input passes this rule or not. The function accepts an argument which represents the input value.
-- **errors** | Object: each value should be a String which will be displayed when the input fails corresponding rule, so the keys should be consistent with keys in `rules`.
+- **rules** | Object: each value should be a function that returns `false` when the input passes this rule, or a String as the error message when it fails. The function accepts two arguments, `value` and `parameter`.
+- **errors** | Object: you can change error messages of available rules above. Each value should be a String which represents the new error. Notice that the error of rule `length` cannot be changed.
 
 ## Modifiers
 Modifiers are meant to handle some special needs through the validation.
